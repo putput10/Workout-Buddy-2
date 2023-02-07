@@ -9,7 +9,7 @@ const session = require('express-session');
 // import express-handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 
 const app = express();
@@ -17,15 +17,17 @@ const PORT = process.env.PORT || 3001;
 
 // set up session
 const sess = {
-  secret: 'What it Is?',
   cookies: {
+    maxage: null,
     httpOnly: true,
     secure: false,
     samesite: 'strict',
-    // maxage: null,
   },
   resave: false,
   saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  })
 };
 
 app.use(session(sess));
