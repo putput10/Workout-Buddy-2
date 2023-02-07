@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3001;
 
 // set up session
 const sess = {
+  secret: "workitout",
   cookies: {
     maxage: null,
     httpOnly: true,
