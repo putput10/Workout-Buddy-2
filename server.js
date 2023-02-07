@@ -22,7 +22,7 @@ const sess = {
     httpOnly: true,
     secure: false,
     samesite: 'strict',
-    maxage: null,
+    // maxage: null,
   },
   resave: false,
   saveUninitialized: true,
