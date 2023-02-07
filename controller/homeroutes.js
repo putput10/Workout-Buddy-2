@@ -15,7 +15,7 @@ router.get('/', async (req,res) => {
 
         const posts = postData. map((post) => post.get({ plain: true }));
      
-    res.render('homepage', {
+    res.render('homepageS', {
         posts,
         loggedIn: req.session.loggedIn
     });
@@ -36,7 +36,7 @@ router.get('/login', (req,res) => {
 // render the profile page
 router.get('/profile', async (req,res) => {
     try{
-        const profileData = await Profile.findByPk(req.session.profileId, {
+        const profileData = await Profile.findByPk(req.session.id, {
             attributes: { exclude: ['password'] },
             include: [{ model: Post, Workout}],
         });
@@ -57,7 +57,13 @@ router.get('/profile', async (req,res) => {
 // });
 // render the profile page
 router.get('/sign-up', (req,res) => {
-    res.render('sign-up')
+    if (req.session.loggedIn) {
+        res.redirect('/profile');
+        return;
+
+    }
+    
+    res.render('sign-up');
 
 });
 
