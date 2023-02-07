@@ -36,7 +36,9 @@ router.post("/", async (req, res) => {
     const profileData = await Profile.create(req.body);
     
     req.session.save(() => {
+      req.session.profileId = profileData.id;
       req.session.loggedIn = true;
+
       res.status(200).json(profileData);
     });
   } catch (err) {
@@ -66,7 +68,8 @@ router.post('/login', async (req, res)=> {
     }
 
     req.session.save(() => {
-      req.session.loggedin =true;
+      req.session.profileId = profileData.id;
+      req.session.loggedin = true;
       res.status(200).json({username: profileData, message: 'Welcome.'});
     });
   } catch (err) {
@@ -79,18 +82,28 @@ router.post('/login', async (req, res)=> {
 router.put("/:id", async (req, res) => {
   try {
   // update a category by its `id` value
-    const ProfileData = await Profile.update(req.body,{
+    const profileData = await Profile.update(req.body,{
       where: {
         id: req.params.id,
       },
     });
-    if (!ProfileData) {
+    if (!profileData) {
       res.status(404).json({ message: "No Profile found with this id!" });
       return;
     }
-    res.status(200).json(ProfileData);
+    res.status(200).json(profileData);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res. status(404).end();
   }
 });
 
