@@ -55,6 +55,21 @@ router.get('/profile', async (req,res) => {
 // router.get('/post', (req,res) => {
 //     res.render('post')
 // });
+
+// render the Posts
+router.get('/posts', async (req,res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/profile');
+        return;
+
+    }
+    
+    res.render('posts');
+
+});
+
+
+
 // render the profile page
 router.get('/sign-up', (req,res) => {
     if (req.session.loggedIn) {
