@@ -55,11 +55,8 @@ There are three endpoints for you to return data from the workoutBuddy app
         `nodemon server.js`
         
 ## Credits
-[Jamaia Butler](https://github.com/JamaiaB)
 [Beto De Amras](https://github.com/nosbeto)
 [Charles Putney](https://github.com/putput10)
-[Robert McMullen](https://github.com/ItsssBobby)
-[Brandon Grady](https://github.com/nbhsbg53)
 
 ## License
 MIT License
