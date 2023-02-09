@@ -1,5 +1,7 @@
 const express = require('express');
 const routes = require('./controller');
+//import dotenv
+require('dotenv').config();
 // import sequelize connection
 const sequelize = require('./config/connection');
 // import express-session
@@ -17,7 +19,7 @@ const PORT = process.env.PORT || 3001;
 
 // set up session
 const sess = {
-  secret: "workitout",
+  secret: process.env.SECRETS,
   cookies: {
     maxage: null,
     httpOnly: true,
