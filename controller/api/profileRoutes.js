@@ -52,21 +52,17 @@ router.post('/login', async (req, res)=> {
     const profileData = await Profile.findone({
       where: {
         username: req.body.username,
-
       },
     });
     if (!profileData) {
       res.status(400).json({ message: 'No user found with this username. Please try again.'});
       return;
     }
-
     const correctPwd = await profiledata.checkpassword(req.body.password);
-
     if (!correctPwd) {
       res.status(400).json({ message: 'No user found with this password. Please try again. '});
       return;
     }
-
     req.session.save(() => {
       req.session.profileId = profileData.id;
       req.session.loggedin = true;
