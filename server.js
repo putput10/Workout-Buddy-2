@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express');
 const routes = require('./controller');
 //import dotenv
@@ -6,10 +7,9 @@ require('dotenv').config();
 const sequelize = require('./config/connection');
 // import express-session
 const session = require('express-session');
-// const indexRouter = require('./controller/index');
-// const authRouter = require('./utils/auth');
 // import express-handlebars
 const exphbs = require('express-handlebars');
+
 const hbs = exphbs.create({});
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -37,15 +37,13 @@ app.use(session(sess));
 
 
 
-// app.use('/', indexRouter);
-// app.use('/', authRouter);
-
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
