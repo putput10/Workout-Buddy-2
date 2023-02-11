@@ -7,7 +7,7 @@ const signupFormHandler = async (event) => {
     const password = document.querySelector('#registerPwd').value.trim();
   
     if (firstName && lastName && email && username && password) {
-      const response = await fetch('/api/profile', {
+      const response = await fetch('/api/profileRoutes', {
         method: 'POST',
         body: JSON.stringify({ firstName, lastName, email, username, password }),
         headers: { 'Content-Type': 'application/json' },
@@ -23,4 +23,4 @@ const signupFormHandler = async (event) => {
 
 document
     .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
+    .addEventListener('submit', console.log(signupFormHandler));
