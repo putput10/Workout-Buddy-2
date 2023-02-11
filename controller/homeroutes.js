@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Profile, Workout, Post } = require('../models')
+const withAuth = require('../utils/auth');
+
 // render the homepage
 router.get('/', async (req,res) => {
     try{
@@ -70,10 +72,10 @@ router.get('/posts', async (req,res) => {
 
 
 
-// render the profile page
+// render the sign-up page
 router.get('/sign-up', (req,res) => {
     if (req.session.loggedIn) {
-        res.redirect('/profile');
+        res.redirect('/posts');
         return;
 
     }

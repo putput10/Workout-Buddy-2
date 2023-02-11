@@ -11,6 +11,8 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 
 const hbs = exphbs.create({});
+
+// Creating a new store
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 
@@ -33,8 +35,8 @@ const sess = {
   })
 };
 
+//middleware
 app.use(session(sess));
-
 
 
 app.engine('handlebars', hbs.engine);
