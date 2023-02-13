@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
     
     req.session.save(() => {
       req.session.profileId = profileData.id;
-      req.session.logged_in = true;
+      req.session.loggedIn = true;
 
       res.status(200).json(profileData);
     });
@@ -69,7 +69,7 @@ router.post('/login', async (req, res) => {
             // Create session variables based on the logged in user
     req.session.save(() => {
       req.session.profileId = ProfileData.id;
-      req.session.logged_in = true;
+      req.session.loggedIn = true;
       
       res.json({ user: ProfileData, message: 'You are now logged in!' });
     });
@@ -129,7 +129,7 @@ router.post('/login', async (req, res) => {
 // });
 
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });

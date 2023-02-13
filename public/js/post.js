@@ -1,8 +1,9 @@
 const loginPostHandler = async (event) => {
     event.preventDefault();
+    // const title = document.querySelector('#titlepost').value.trim()
     const post = document.querySelector('#post').value.trim()
 
-    if (post ) {
+    if (post) {
         const response = await fetch('/api/post', {
           method: 'POST',
           body: JSON.stringify({ post }),
