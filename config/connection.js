@@ -14,9 +14,9 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
-      dialectOptions: {
-        decimalNumbers: true,
-      },
+      // dialectOptions: {
+      //   decimalNumbers: true,
+      // },
       port: 3306,
     },
   );
