@@ -53,6 +53,30 @@ There are three endpoints for you to return data from the workoutBuddy app
 
 
         `nodemon server.js`
+
+## Usage
+* When entering the application you will be directed to the welcome page.
+
+* If you are a new user, click the sign up button to be redirected to the sign up page.
+
+* For a returning user, click the login button to be redirected to the login page.
+
+* Once logged in the user will be redirected to the posts page.
+
+* To create a post enter a Title in the corresponding text-box, then type in your content into the text area. When finished click the "Post!" button.
+
+* To logout off a user's account, navigate to the logout link in the Navigation bar on the top-left of the page.
+
+* Once logged out the user will be redirected to the welcome page. 
+
+## Screenshots
+
+![image](https://user-images.githubusercontent.com/114193157/218567659-931abc94-53e0-4355-98c2-b1a2fd7adddd.png)
+
+![image](https://user-images.githubusercontent.com/114193157/218568281-61658423-f6df-415b-80aa-b0619b0caba3.png)
+
+![image](https://user-images.githubusercontent.com/114193157/218568460-72259aa1-11d9-4491-9f1a-40543d45eb6c.png)
+
         
 ## Credits
 [Beto De Amras](https://github.com/nosbeto)
