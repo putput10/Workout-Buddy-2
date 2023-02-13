@@ -27,6 +27,9 @@ const profileData = [
     },
 ]
 
-const seedProfiles = () => Profile.bulkCreate(profileData)
+const seedProfiles = () => Profile.bulkCreate(profileData,{
+    individualHooks: true,
+    returning: true,
+  });
 
 module.exports = seedProfiles;

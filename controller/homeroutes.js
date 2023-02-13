@@ -60,14 +60,26 @@ router.get('/profile', async (req,res) => {
 
 // render the Posts
 router.get('/posts', async (req,res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/profile');
-        return;
+    try{
+        // Get all Post and Workout Data and join with user data
+        const postData = await Post.findAll({
+            include: [
+                {
+                    model: Profile,
+                    attributes: ['username'],
+                },
+            ],
+        });
 
+        const posts = postData. map((post) => post.get({ plain: true }));
+     
+    res.render('posts', {
+        posts,
+        loggedIn: req.session.loggedIn
+    });
+    } catch (err) {
+        res.status(500).json(err);
     }
-    
-    res.render('posts');
-
 });
 
 

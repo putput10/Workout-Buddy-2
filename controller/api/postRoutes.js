@@ -28,4 +28,29 @@ router.get("/:id", async (req, res) => {
     }
   });
 
+  //
+  router.get('/', async (req,res) => {
+    try{
+        // Get all Post and Workout Data and join with user data
+        const postData = await Post.findAll({
+            include: [
+                {
+                    model: Profile,
+                    attributes: ['username'],
+                },
+            ],
+        });
+
+        const posts = postData. map((post) => post.get({ plain: true }));
+     
+    res.render('welcome', {
+        posts,
+        loggedIn: req.session.loggedIn
+    });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
 module.exports = router;
