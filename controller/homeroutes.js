@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Profile, Workout, Post } = require('../models')
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 // render the homepage
 router.get('/', async (req,res) => {

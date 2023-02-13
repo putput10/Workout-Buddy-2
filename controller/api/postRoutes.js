@@ -5,7 +5,13 @@ const { Post } = require("../../models");
 router.post("/", async (req, res) => {
     try {
       // create a new post
-      const postData = await Post.create(req.body);
+      const postData = await Post.create(
+        {
+          "profileId":req.session.profileId,
+          "post":req.body.post,
+          "title":req.body.title
+        }
+      );
       res.status(200).json(postData);
     } catch (err) {
       res.status(400).json(err);

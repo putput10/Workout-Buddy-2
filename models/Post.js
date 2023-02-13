@@ -28,6 +28,9 @@ Post.init(
     post: {
       type: DataTypes.TEXT,
     },
+    title: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,

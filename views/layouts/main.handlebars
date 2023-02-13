@@ -37,7 +37,7 @@
           <a class="nav-link" href="./posts">Post</a>
         </li>
         <li id="login">
-          <a class="nav-link" href="./logout">Logout</a>
+          <a class="nav-link" id="logout" href="/">Logout</a>
           {{else}}
         <li class="nav-item">
           <a class="nav-link" href="./sign-up">Sign Up</a>
@@ -104,7 +104,7 @@
                       style="width: 185px"
                       alt="logo"
                     />
-                    <h4 class="mt-1 mb-5 pb-1">TITLE</h4>
+                    <h4 class="mt-1 mb-5 pb-1">Workout Buddy</h4>
                   </div>
                   <div class="card mb-4"style="background-color: #eee">
                     {{{body}}}
@@ -122,7 +122,7 @@
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
 ></script>
-  {{#if logged_in}}
+  {{#if loggedIn}}
   <script src="js/logout.js"></script>
   {{/if}}
 </html>
